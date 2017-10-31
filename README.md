@@ -1,2 +1,30 @@
-# react-native-low-power-mode-ios
-This module will help your React-Native app know if it's in iOS's low power mode and act accordingly.
+
+# react-native-low-power-mode
+
+## Getting started
+
+`$ npm install react-native-low-power-mode --save`
+
+### Mostly automatic installation
+
+`$ react-native link react-native-low-power-mode`
+
+### Manual installation
+
+
+#### iOS
+
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+2. Go to `node_modules` ➜ `react-native-low-power-mode` and add `RNLowPowerMode.xcodeproj`
+3. In XCode, in the project navigator, select your project. Add `libRNLowPowerMode.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4. Run your project (`Cmd+R`)<
+
+
+## Usage
+```javascript
+import RNLowPowerMode from 'react-native-low-power-mode';
+
+// TODO: What to do with the module?
+RNLowPowerMode;
+```
+  
