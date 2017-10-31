@@ -15,7 +15,11 @@
   ],
   "author": "Elad Gil",
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/ptelad/react-native-low-power-mode.git"
+  },
   "peerDependencies": {
-    "react-native": "^0.47.0"
+    "react-native": "^0.42.0"
   }
 }
