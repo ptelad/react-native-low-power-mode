@@ -5,11 +5,13 @@ const { RNLowPowerMode } = NativeModules;
 
 let listenerSubscription;
 
+const RNLowPowerModeEmitter = new NativeEventEmitter(RNLowPowerMode);
+
 export default {
     isLowPowerModeEnabled: RNLowPowerMode.isLowPowerModeEnabled,
 
     setLowPowerModeListener: (listener) => {
-        listenerSubscription = NativeEventEmitter.addListener('PowerStateChanged', listener);
+        listenerSubscription = RNLowPowerModeEmitter.addListener('PowerStateChanged', listener);
     },
 
     removeLowPowerModeListener: () => {

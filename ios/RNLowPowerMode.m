@@ -12,6 +12,10 @@
 }
 RCT_EXPORT_MODULE()
 
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"PowerStateChanged"];
+}
+
 // Will be called when this module's first listener is added.
 -(void)startObserving {
     hasListeners = YES;
@@ -29,18 +33,12 @@ RCT_EXPORT_MODULE()
 
 -(void)powerStateChanged {
     if (hasListeners) {
-        if ([[NSProcessInfo processInfo] isLowPowerModeEnabled]) {
-            // Low Power Mode is enabled. Start reducing activity to conserve energy.
-            [self sendEventWithName:@"PowerStateChanged" body:@{@"lowPowerMode": @YES}];
-        } else {
-            // Low Power Mode is not enabled.
-            [self sendEventWithName:@"PowerStateChanged" body:@{@"lowPowerMode": @NO}];
-        };
+        NSNumber *res = [NSNumber numberWithBool:[[NSProcessInfo processInfo] isLowPowerModeEnabled]];
+        [self sendEventWithName:@"PowerStateChanged" body:res];
     }
 }
 
-RCT_EXPORT_METHOD(isLowPowerModeEnabled:
-                  resolver:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(isLowPowerModeEnabled:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSNumber *res = [NSNumber numberWithBool:[[NSProcessInfo processInfo] isLowPowerModeEnabled]];
