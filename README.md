@@ -1,6 +1,8 @@
 
 # react-native-low-power-mode
 
+A React-Native library to help you detect iOS's low power mode.
+
 ## Getting started
 
 `$ npm install react-native-low-power-mode --save`
@@ -24,7 +26,29 @@
 ```javascript
 import RNLowPowerMode from 'react-native-low-power-mode';
 
-// TODO: What to do with the module?
-RNLowPowerMode;
+...
+
+componentWillMount() {
+    RNLowPowerMode.isLowPowerModeEnabled().then(isLowPower => {
+        this.setState({isLowPower});
+    });
+
+    RNLowPowerMode.setLowPowerModeListener((isLowPower) => {
+        this.setState({isLowPower});
+    });
+}
+
+componentWillUnmount() {
+    RNLowPowerMode.removeLowPowerModeListener();
+}
+
 ```
-  
+
+That's it, it's that easy.
+
+Now that you know the device is in low power mode, scale back animations and try to do less processing.
+
+Read more about low power mode [HERE](https://developer.apple.com/library/content/documentation/Performance/Conceptual/EnergyGuide-iOS/LowPowerMode.html)
+
+## Licence ##
+**MIT**
