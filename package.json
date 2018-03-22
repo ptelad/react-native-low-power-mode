@@ -1,8 +1,8 @@
 {
   "name": "react-native-low-power-mode",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
-  "main": "index.ios.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
